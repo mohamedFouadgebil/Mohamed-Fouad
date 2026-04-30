@@ -1,8 +1,11 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="overflow-x-hidden">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <title>Mohamed Fouad | Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
@@ -19,14 +22,17 @@
         padding: 0;
         box-sizing: border-box;
       }
-      html {
+      html,
+      body {
         scroll-behavior: smooth;
+        width: 100%;
+        overflow-x: hidden;
+        position: relative;
       }
       body {
         font-family: "Plus Jakarta Sans", sans-serif;
         background: #030014;
         color: white;
-        overflow-x: hidden;
       }
       ::-webkit-scrollbar {
         width: 8px;
@@ -83,6 +89,7 @@
         align-items: center;
         justify-content: center;
         position: relative;
+        width: 100%;
       }
       .nav-container {
         position: relative;
@@ -192,7 +199,7 @@
       }
     </style>
   </head>
-  <body>
+  <body class="overflow-x-hidden">
     <div
       class="glow-orb w-64 h-64 md:w-96 md:h-96 bg-violet-600/10 top-[-5%] right-[-5%]"
     ></div>
@@ -619,20 +626,22 @@
     </section>
     <section id="contact" class="px-4 md:px-6 lg:px-24 bg-[#05011a] py-24">
       <div class="max-w-6xl mx-auto w-full">
-        <div class="grid lg:grid-cols-2 gap-16 items-start">
-          <div class="text-center lg:text-left">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div
+            class="text-center lg:text-left flex flex-col items-center lg:items-start"
+          >
             <h2
               class="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight text-white"
             >
               Let's <span class="text-violet-500">Connect</span>
             </h2>
             <p
-              class="text-gray-400 text-lg mb-10 leading-relaxed max-w-xl mx-auto lg:mx-0"
+              class="text-gray-400 text-base md:text-lg mb-10 leading-relaxed max-w-xl"
             >
               Have a project in mind or just want to discuss backend
               architecture? I'm always open to interesting collaborations.
             </p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
+            <div class="flex flex-col gap-4 w-full max-w-md">
               <div
                 class="bg-white/5 border border-white/10 p-4 rounded-2xl flex items-center gap-4 hover:border-violet-500/50 transition-colors"
               >
@@ -641,7 +650,7 @@
                 >
                   <i class="fa-solid fa-envelope text-violet-400 text-lg"></i>
                 </div>
-                <div class="min-w-0 text-left">
+                <div class="text-left">
                   <p
                     class="text-[10px] font-bold uppercase tracking-widest text-gray-500"
                   >
@@ -721,7 +730,7 @@
                 </div>
               </div>
               <div
-                class="bg-white/5 border border-white/10 p-4 rounded-2xl flex items-center gap-4 hover:border-violet-500/50 transition-colors sm:col-span-2 lg:col-span-1"
+                class="bg-white/5 border border-white/10 p-4 rounded-2xl flex items-center gap-4 hover:border-violet-500/50 transition-colors"
               >
                 <div
                   class="w-12 h-12 shrink-0 rounded-xl bg-violet-500/10 flex items-center justify-center"
@@ -744,7 +753,7 @@
             </div>
           </div>
           <div
-            class="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-md flex flex-col justify-center items-center text-center"
+            class="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-md flex flex-col justify-center items-center text-center max-w-md mx-auto w-full lg:max-w-none"
           >
             <div
               class="w-20 h-20 bg-violet-500/20 rounded-full flex items-center justify-center mb-6 ring-4 ring-violet-500/10"
@@ -754,9 +763,9 @@
             <h3 class="text-2xl font-bold mb-4">
               Ready to build something great?
             </h3>
-            <p class="text-gray-400 mb-8 max-w-sm">
-              Skip the forms! Contact me directly for business inquiries,
-              collaboration, or just a technical chat.
+            <p class="text-gray-400 mb-8">
+              Contact me directly for business inquiries, collaboration, or just
+              a technical chat.
             </p>
             <div class="w-full space-y-4">
               <button
@@ -767,7 +776,7 @@
                   <i
                     class="fa-solid fa-copy text-gray-500 group-hover:text-violet-400"
                   ></i
-                  ><span id="emailText" class="text-white font-medium"
+                  ><span id="emailText" class="text-white font-medium text-sm"
                     >mohmed.foouad@gmail.com</span
                   >
                 </div>
@@ -780,10 +789,9 @@
                 href="https://wa.me/201203435021"
                 target="_blank"
                 class="w-full bg-violet-600 hover:bg-violet-700 text-white font-bold py-4 rounded-2xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-violet-600/20"
+                ><i class="fa-brands fa-whatsapp text-lg"></i> Send WhatsApp
+                Message</a
               >
-                <i class="fa-brands fa-whatsapp text-lg"></i> Send WhatsApp
-                Message
-              </a>
             </div>
             <p
               class="mt-8 text-[11px] text-gray-500 font-bold uppercase tracking-[0.2em]"
@@ -822,6 +830,23 @@
           emailText.classList.remove("text-violet-400");
         }, 2000);
       }
+      const sections = document.querySelectorAll("section");
+      const navLinks = document.querySelectorAll(".nav-link");
+      window.addEventListener("scroll", () => {
+        let current = "";
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop;
+          if (pageYOffset >= sectionTop - 150) {
+            current = section.getAttribute("id");
+          }
+        });
+        navLinks.forEach((link) => {
+          link.classList.remove("active");
+          if (link.getAttribute("href").includes(current)) {
+            link.classList.add("active");
+          }
+        });
+      });
     </script>
   </body>
 </html>
